@@ -1,6 +1,10 @@
 import java.util.Scanner;
+import java.time.LocalDate;
 public class Main {
 
+	
+	
+	
 	public static void main(String[] args) {
 		Scanner scan= new Scanner(System.in);
 		System.out.println("Please give the number of the employees");
@@ -10,11 +14,16 @@ public class Main {
 		
 		
 		for(int i=0;i<n;i++) {
-			System.out.println("Please give the details(name, age) of the employees");
-			employees[i]=new Employee(scan.next(),scan.nextInt());
+			System.out.println("Please give the details(name, birthday(year,month,day )) of the employees");
+			String name=scan.next();
+			LocalDate birthday=LocalDate.of(scan.nextInt(), scan.nextInt(), scan.nextInt());
+			employees[i]=new Employee(name, birthday);
 			
 		}
 		
+		for(int i=0;i<n;i++) {
+			System.out.println(employees[i].empBirthday());
+		}
 		
 		/*for(int i=0;i<n;i++) {
 			System.out.println(employees[i].toString());
@@ -41,9 +50,9 @@ public class Main {
 					max=j;
 					
 				}
-				Employee temp=new Employee(employees[i].getEmployeeName(),employees[i].getAge());
-				employees[i]=new Employee(employees[max].getEmployeeName(),employees[max].getAge());
-				employees[max]=new Employee(temp.getEmployeeName(),temp.getAge());;
+				Employee temp=new Employee(employees[i].getEmployeeName(),employees[i].dateBirthday());
+				employees[i]=new Employee(employees[max].getEmployeeName(),employees[max].dateBirthday());
+				employees[max]=new Employee(temp.getEmployeeName(),temp.dateBirthday());;
 			}
 				
 		}
@@ -61,9 +70,9 @@ public class Main {
 					min=j;
 					
 				}
-				Employee temp=new Employee(employees[i].getEmployeeName(),employees[i].getAge());
-				employees[i]=new Employee(employees[min].getEmployeeName(),employees[min].getAge());
-				employees[min]=new Employee(temp.getEmployeeName(),temp.getAge());;
+				Employee temp=new Employee(employees[i].getEmployeeName(),employees[i].dateBirthday());
+				employees[i]=new Employee(employees[min].getEmployeeName(),employees[min].dateBirthday());
+				employees[min]=new Employee(temp.getEmployeeName(),temp.dateBirthday());;
 			}
 				
 		}

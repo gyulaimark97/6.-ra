@@ -14,6 +14,26 @@ public class Employee {
 	 static int retiringYear=65;
 	 
 	 
+	 static String [] hungarianMonthNames=new String[13];{	 	 
+	 hungarianMonthNames[0]=" ";
+	 hungarianMonthNames[1]="Január";
+	 hungarianMonthNames[2]="Február";
+	 hungarianMonthNames[3]="Március";
+	 hungarianMonthNames[4]="Április";
+	 hungarianMonthNames[5]="Május";
+	 hungarianMonthNames[6]="Június";
+	 hungarianMonthNames[7]="Július";
+	 hungarianMonthNames[8]="Agusztus";
+	 hungarianMonthNames[9]="Szeptember";
+	 hungarianMonthNames[10]="Október";
+	 hungarianMonthNames[11]="November";
+	 hungarianMonthNames[12]="December";
+	 }
+	 
+	 
+	 
+	 
+	 
 	public Employee(String employeeName,long salary, LocalDate birthday) {
 		this.salary=salary;
 		this.employeeName=employeeName;
@@ -46,7 +66,7 @@ public class Employee {
 	}
 
 	public int remainingYears() {
-		return retiringYear-currentDate.getYear()-birthday.getYear();
+		return retiringYear-(currentDate.getYear()-birthday.getYear());
 	}
 
 	public int getAge() {
@@ -109,8 +129,13 @@ public class Employee {
 	}
 	
 	public String empBirthday() {
-		return this.getEmployeeName()+","+ this.getAge()+ birthday.getMonth().name()+ birthday.getDayOfMonth();
+		return this.getEmployeeName()+" , "+ this.getAge()+" "+ hungarianMonthNames[birthday.getMonth().getValue()]+" "+ birthday.getDayOfMonth();
 	}
 	
+	
+	
+	public LocalDate dateBirthday() {
+		return birthday;
+	}
 	
 }
